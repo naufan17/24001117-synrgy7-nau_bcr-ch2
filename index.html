@@ -21,52 +21,60 @@
             <div class="w-24 h-8 bg-blue-800"></div>
             <ul class="space-x-8 items-center hidden lg:flex">
               <li>
-                <a href="#OurServices" class="font-medium hover:text-gray-700">Our Services</a>
+                <a href="#OurServices" class="font-medium font-sans hover:text-gray-700">Our Services</a>
               </li>
               <li>
-                <a href="#WhyUs" class="font-medium hover:text-gray-700">Why Us</a>
+                <a href="#WhyUs" class="font-medium font-sans hover:text-gray-700">Why Us</a>
               </li>
               <li>
-                <a href="#Testimonial" class="font-medium hover:text-gray-700">Testimonial</a>
+                <a href="#Testimonial" class="font-medium font-sans hover:text-gray-700">Testimonial</a>
               </li>
               <li>
-                <a href="#FAQ" class="font-medium hover:text-gray-700">FAQ</a>
+                <a href="#FAQ" class="font-medium font-sans hover:text-gray-700">FAQ</a>
               </li>
               <li>
-                <a href="/" class="inline-flex items-center justify-center h-10 px-5 font-semibold text-white rounded bg-green-500 hover:bg-green-600">Register</a>
+                <a href="/" class="inline-flex items-center justify-center h-10 px-5 font-semibold font-sans text-white rounded bg-green-500 hover:bg-green-600">Register</a>
               </li>
             </ul>
+            <!-- side nav button -->
             <div class="lg:hidden">
-              <button aria-label="Open Menu" title="Open Menu">
-                <i data-feather="menu" class="w-10"></i>
+              <button id="openMenu" aria-label="Open Menu" title="Open Menu">
+                <i data-feather="menu" class="w-10 h-8"></i>
               </button>     
             </div>
           </div>
         </div>
-      </nav>
-      <div class="fixed inset-0 bg-gray-400 bg-opacity-75 transition-opacity hidden">
-      </div>
-      <div class="fixed inset-0 overflow-hidden hidden">
-        <div class="absolute inset-0 overflow-hidden">
-          <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <div class="pointer-events-auto relative w-screen max-w-md">
-              <div class="flex h-full flex-col overflow-y-scroll justify-between bg-white py-6 shadow-xl">
-                <div class="px-4 sm:px-6">
-                  <h2 class="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">Panel title</h2>
-                  <button type="button" class=" text-gray-600 hover:text-black">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                  <!-- Your content -->
-                </div>
+        <!-- Side nav menu -->
+        <div id="sideMenu" class="fixed inset-0 bg-gray-700 bg-opacity-50 z-50 hidden">
+          <div class="flex justify-end h-full">
+            <div class="bg-white w-64 p-6">
+              <div class="flex py-4 item-center justify-between">
+                <p class="font-bold font-sans text-lg">BCR</p>
+                <button id="closeMenu" aria-label="Close Menu" title="Close Menu">
+                  <i data-feather="x" class="w-8"></i>
+                </button>
               </div>
+              <ul class="space-y-4">
+                <li>
+                  <a href="#OurServices" class="font-medium font-sans hover:text-gray-700">Our Services</a>
+                </li>
+                <li>
+                  <a href="#WhyUs" class="font-medium font-sans hover:text-gray-700">Why Us</a>
+                </li>
+                <li>
+                  <a href="#Testimonial" class="font-medium font-sans hover:text-gray-700">Testimonial</a>
+                </li>
+                <li>
+                  <a href="#FAQ" class="font-medium font-sans hover:text-gray-700">FAQ</a>
+                </li>
+                <li>
+                  <a href="/" class="inline-flex items-center justify-center h-10 px-5 font-semibold font-sans text-white rounded bg-green-500 hover:bg-green-600">Register</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
+      </nav>
       
       <div class="relative px-8 py-12 mt-12 mb-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:px-12 lg:py-16">
         <div class="mb-16 lg:max-w-lg lg:mb-0">
@@ -78,7 +86,7 @@
             Kami menyediakan mobil berkualitas terbaik dengan jarga terjagkau. 
             Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.
           </p>
-          <a href="/" class="inline-flex items-center justify-center h-10 px-5 font-semibold text-white rounded bg-green-500 hover:bg-green-600">
+          <a href="/" class="inline-flex items-center justify-center h-10 px-5 font-semibold font-sans text-white rounded bg-green-500 hover:bg-green-600">
             Mulai Sewa Mobil
           </a>
         </div>
@@ -453,6 +461,20 @@
 
       feather.replace();
 
+      // Mobile Side Nav Menu
+      const openMenu = document.getElementById('openMenu');
+      const closeMenu = document.getElementById('closeMenu');
+      const sideMenu = document.getElementById('sideMenu');
+
+      openMenu.addEventListener('click', () => {
+        sideMenu.classList.toggle('hidden');
+      });
+
+      closeMenu.addEventListener('click', () => {
+        sideMenu.classList.toggle('hidden');
+      });
+      
+      // Accordion
       function toggleAccordion(button) {
         const content = button.nextElementSibling;
         const arrowIcon = button.querySelector('.arrow-icon');
@@ -461,6 +483,7 @@
         arrowIcon.classList.toggle('rotate-180');
       }
 
+      // Corousel
       const prevButton = document.getElementById('prevButton');
       const nextButton = document.getElementById('nextButton');
       const testimonialItems = document.querySelectorAll('.testimonial-item');
